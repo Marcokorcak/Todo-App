@@ -2,41 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-:link{
+:link {
   color: rgb(0, 0, 0);
   font-size: larger;
   margin-left: 3%;
   margin-right: 3%;
   font-size: 30px;
-
 }
 
-:root{
+:root {
   background-image: url(https://cdn.discordapp.com/attachments/973631615832051782/1107855059175346216/Screen_Shot_2023-05-15_at_10.20.23_PM.png);
- background-size: cover;
- background-repeat: no-repeat;
- height: auto;
- 
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
 }
 
-nav.header{
+nav.header {
   display: flex;
   justify-content: center;
   margin-top: 7%;
 }
 
-p.footer{
+p.footer {
   position: fixed;
-margin-left: 25%;
-	width: 50%;
-	bottom: 0;
-	color: rgb(0, 0, 0);
-	font-size: 20px;
+  margin-left: 25%;
+  width: 50%;
+  bottom: 0;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
   text-align: center;
-
 }
 
-
-
+p {
+  color: black;
+  font-size: larger;
+}
