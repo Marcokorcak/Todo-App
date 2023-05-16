@@ -4,10 +4,10 @@
 
 :link {
   color: rgb(0, 0, 0);
-  font-size: larger;
   margin-left: 3%;
   margin-right: 3%;
   font-size: 30px;
+  font-family: Shrikhand;
 }
 
 :root {
@@ -20,7 +20,7 @@
 nav.header {
   display: flex;
   justify-content: center;
-  margin-top: 6%;
+  margin-top: 6.5%;
 }
 
 p.footer {
