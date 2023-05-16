@@ -20,20 +20,105 @@
 nav.header {
   display: flex;
   justify-content: center;
-  margin-top: 7%;
+  margin-top: 6%;
 }
 
 p.footer {
   position: fixed;
-  margin-left: 25%;
-  width: 50%;
+  width: 100%;
   bottom: 0;
   color: rgb(0, 0, 0);
   font-size: 20px;
   text-align: center;
+  justify-content: center;
 }
 
 p {
   color: black;
   font-size: larger;
+}
+
+.card {
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5%;
+}
+
+h1 {
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+label {
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.form__group {
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+  text-align: center;
+  justify-content: center;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid grey;
+  outline: 0;
+  font-size: 1.3rem;
+  color: black;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: gray;
+}
+
+.form__field:focus {
+  ~ .form__label {
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #11998e;
+    font-weight: 700;
+  }
+  padding-bottom: 10px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11996e, #38ef7e);
+  border-image-slice: 1;
+}
+/* reset input */
+.form__field {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}
+
+div {
+  text-align: center;
+  justify-content: center;
+  margin: auto;
 }
