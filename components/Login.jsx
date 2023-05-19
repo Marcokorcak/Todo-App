@@ -5,10 +5,12 @@ import { loginUser } from "@/app/utils/data";
 import { useReducer } from "react";
 import { useRouter } from "next/navigation";
 import useUser from "@/hooks/useUser";
+import useUserMustBeLogged from "@/hooks/useUserMustBeLogged";
 
 const Login = () => {
   const { user } = useUser();
   const router = useRouter();
+  useUserMustBeLogged(user, "out", "/profile");
 
   function reducer(state, action) {
     switch (action.type) {

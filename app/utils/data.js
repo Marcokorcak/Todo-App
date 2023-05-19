@@ -57,7 +57,6 @@ const registerUser = async (email, password, name, slug) => {
   };
 };
 
-
 const loginUser = async (email, password) => {
   const authResponse = await supabase.auth.signInWithPassword({
     email,
@@ -182,8 +181,9 @@ const getLinks = async (userId) => {
   return { success: true, data };
 };
 
+const logout = async () => {
+  const { error } = await supabase.auth.signOut();
+  return { success: !error, error };
+};
 
-export { registerUser, 
-  loginUser,
-  getCurrentUser
- };
+export { registerUser, loginUser, getCurrentUser, logout };
