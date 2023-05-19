@@ -10,7 +10,6 @@ const Login = () => {
   const { user } = useUser();
   const router = useRouter();
 
-
   function reducer(state, action) {
     switch (action.type) {
       case "email":
@@ -46,7 +45,7 @@ const Login = () => {
     dispatch({ type: "loading", value: false });
     if (!!response?.success) {
       setTimeout(() => {
-        router.replace("/profile");
+        router.replace("/");
       }, 3000);
     }
   };
@@ -70,6 +69,7 @@ const Login = () => {
           </div>
         )}
         <h1 className="my-8 h1 text-center">Login to your Account</h1>
+        {/* <FontAwesomeIcon icon="fa-solid fa-user" /> */}
         <form
           onSubmit={login}
           className={loading ? "opacity-[10%] pointer-events-none" : ""}

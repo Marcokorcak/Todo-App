@@ -123,3 +123,17 @@ div {
   justify-content: center;
   margin: auto;
 }
+
+.button {
+  background-color: white;
+  padding: 12px 28px;
+  border-radius: 4px;
+  color: black;
+  border: 2px solid black;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: black;
+  color: white;
+}
