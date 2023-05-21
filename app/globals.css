@@ -19,7 +19,8 @@
 
 nav.header {
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
+  padding-left: 20%;
   margin-top: 7%;
 }
 

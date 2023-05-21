@@ -108,7 +108,7 @@ const getCurrentUser = async () => {
     // in user, and attach it to the user object under the key
     // barge meta, this is so we can access for the current user's
     // name and slug
-    const { data: bargeMeta, error } = await supabase
+    const { data, error } = await supabase
       .from("profile")
       .select("*")
       .eq("user_id", session.data.session.user.id)
@@ -117,7 +117,7 @@ const getCurrentUser = async () => {
     if (error) {
       return {
         success: false,
-        error,
+        error: error.message,
       };
     }
 
@@ -125,25 +125,23 @@ const getCurrentUser = async () => {
     // object and attach to it a property bargeMeta
     // that holds the name and slug (and some other info
     // that is not important)
-    const { data: socialLinks } = await getSocialLinks(
+    /* const { data: socialLinks } = await getSocialLinks(
       session.data.session.user.id
     );
     if (socialLinks?.error) {
       return socialLinks;
-    }
+    } */
 
-    const { data: linkLinks } = await getLinksLinks(
+    /* const { data: linkLinks } = await getLinksLinks(
       session.data.session.user.id
     );
     if (linkLinks?.error) {
       return socialLinks;
-    }
+    } */
 
     const user = {
       ...session.data.session.user,
-      bargeMeta,
-      socialLinks,
-      linkLinks,
+      ListoMeta: data,
     };
 
     return {
