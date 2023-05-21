@@ -177,6 +177,8 @@ export default Register;
 import { registerUser } from "@/app/utils/data";
 import { useReducer } from "react";
 import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const Register = () => {
   const router = useRouter();
@@ -241,7 +243,10 @@ const Register = () => {
             </span>
           </div>
         )}
-        <h1 className="my-8 h1 text-center">Register for an Account!</h1>
+        <h1 className="my-3 h1 text-center">Register for an Account!</h1>
+        <h1 className="text-4xl">
+          <FontAwesomeIcon icon={faUsers} />
+        </h1>
         <form
           onSubmit={register}
           className={loading ? "opacity-[10%] pointer-events-none" : ""}

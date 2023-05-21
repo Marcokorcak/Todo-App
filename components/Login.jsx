@@ -6,6 +6,8 @@ import { useReducer } from "react";
 import { useRouter } from "next/navigation";
 import useUser from "@/hooks/useUser";
 import useUserMustBeLogged from "@/hooks/useUserMustBeLogged";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const { user } = useUser();
@@ -70,8 +72,10 @@ const Login = () => {
             </span>
           </div>
         )}
-        <h1 className="my-8 h1 text-center">Login to your Account</h1>
-        {/* <FontAwesomeIcon icon="fa-solid fa-user" /> */}
+        <h1 className="my-3 h1 text-center">Login to your Account</h1>
+        <h1 className="text-4xl">
+          <FontAwesomeIcon icon={faUser} />
+        </h1>
         <form
           onSubmit={login}
           className={loading ? "opacity-[10%] pointer-events-none" : ""}
