@@ -33,26 +33,21 @@ const Header = () => {
         </p>
         <NavButton link="/" name="Home" />
         <NavButton link={`/user/${user.id}`} name="My Lists" />
-        <NavButton link="/contact" name="User List" />
-        <NavButton link="/register" name="Register" />
-        <NavButton link="/logout" name="Logout" />
+        {/*  <NavButton link="/contact" name="User List" /> */}
+        {/* <NavButton link="/register" name="Register" /> */}
         <NavButton link="/listnew" name="Create" />
-
+        <NavButton link="/logout" name="Logout" />
       </nav>
     );
-  }
-
- 
-
-  else if (!user) {
+  } else if (!user) {
     return (
       <nav className="header">
         <p>
           <FontAwesomeIcon icon={faUser} /> {name}
         </p>
         <NavButton link="/" name="Home" />
-        <NavButton link="/login" name="My Account" />
-        <NavButton link="/contact" name="User List" />
+        {/* <NavButton link="/login" name="My Account" /> */}
+        <NavButton link="/login" name="User List" />
         <NavButton link="/login" name="Login" />
         <NavButton link="/register" name="Register" />
       </nav>
