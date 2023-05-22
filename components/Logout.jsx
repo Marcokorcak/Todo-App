@@ -13,7 +13,7 @@ const Logout = () => {
       if (!success) {
         setError(error.message);
       }
-      setTimeout(() => router.replace("/"), error ? 4000 : 2000);
+      setTimeout(() => router.replace("/login"), error ? 4000 : 2000);
     };
     innerLogout();
   }, []);

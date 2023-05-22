@@ -184,4 +184,27 @@ const logout = async () => {
   return { success: !error, error };
 };
 
-export { registerUser, loginUser, getCurrentUser, logout };
+const createList = async (title, content, user_id) => {
+  const insertResponse = await supabase
+    .from("list")
+    .insert({
+      title,
+      content,
+      user_id,
+    })
+    .select();
+
+  if (insertResponse.error) {
+    return {
+      success: false,
+      error: insertResponse.error,
+    };
+  }
+  return {
+    success: true,
+    message: "successfully added",
+    data: insertResponse.data,
+  };
+};
+
+export { registerUser, loginUser, getCurrentUser, logout, createList };

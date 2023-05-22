@@ -12,7 +12,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 const Login = () => {
   const { user } = useUser();
   const router = useRouter();
-  useUserMustBeLogged(user, "out", "/profile");
+  //useUserMustBeLogged(user, "out", "/profile");
 
   function reducer(state, action) {
     switch (action.type) {

@@ -11,7 +11,6 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
   const [name, setName] = useState("");
   const { user } = useUser();
-  var loggedOut = !!useUserMustBeLogged(user, "out", "/");
 
   useEffect(() => {
     const getCurUser = async () => {
@@ -26,7 +25,7 @@ const Header = () => {
     getCurUser();
   }, []);
 
-  if (!!loggedOut) {
+  if (user) {
     return (
       <nav className="header">
         <p>
@@ -37,13 +36,15 @@ const Header = () => {
         <NavButton link="/contact" name="User List" />
         <NavButton link="/register" name="Register" />
         <NavButton link="/logout" name="Logout" />
+        <NavButton link="/list" name="Create" />
+
       </nav>
     );
   }
 
-  loggedOut = true;
+ 
 
-  if (loggedOut === true) {
+  else if (!user) {
     return (
       <nav className="header">
         <p>
