@@ -158,26 +158,6 @@ const linkRequestData = {
   data: null,
 };
 
-const getLinks = async (userId) => {
-  if (linkRequestData.data) {
-    return linkRequestData.data;
-  }
-
-  const { data, error } = await supabase
-    .from("links")
-    .select("*")
-    .eq("user_id", userId);
-  if (error) {
-    return {
-      success: false,
-      error,
-    };
-  }
-
-  linkRequestData.data = { success: true, data };
-
-  return { success: true, data };
-};
 
 const logout = async () => {
   const { error } = await supabase.auth.signOut();
@@ -207,4 +187,120 @@ const createList = async (title, content, user_id) => {
   };
 };
 
-export { registerUser, loginUser, getCurrentUser, logout, createList };
+const getListByUser = async (user_id) => {
+  const { data, error } = await supabase
+    .from("list")
+    .select("title, id")
+    .eq("user_id", user_id);
+  if (error) {
+    return {
+      success: false,
+      error,
+    };
+  }
+
+  return {
+    success: true,
+    data,
+  };
+};
+
+const getItemByList = async (id) => {
+  const { data, error } = await supabase
+    .from("list_item")
+    .select("title, order, status, id")
+    .eq("list_id", id)
+    .order("order", { ascending: true });
+
+  if (error) {
+    return {
+      success: false,
+      error,
+    };
+  }
+
+  return {
+    success: true,
+    data,
+  };
+};
+
+const getListById = async (id) => {
+  const { data, error } = await supabase
+    .from("list")
+    .select("title")
+    .eq("id", id);
+  if (error) {
+    return {
+      success: false,
+      error,
+    };
+  }
+
+  return {
+    success: true,
+    data,
+  };
+};
+
+const addItem = async (title, order, status, list_id) => {
+  const insertResponse = await supabase
+    .from("list_item")
+    .insert({
+      title,
+      order,
+      status,
+      list_id,
+    })
+    .select();
+
+  if (insertResponse.error) {
+    return {
+      success: false,
+      error: insertResponse.error,
+    };
+  }
+  return {
+    success: true,
+    message: "successfully added",
+    data: insertResponse.data,
+  };
+};
+
+const deleteItem = async (itemId) => {
+  const deleteResponse = await supabase
+    .from("list_item")
+    .delete()
+    .eq("id", itemId);
+};
+
+const updateItem = async (itemId, status) => {
+  const updateResponse = await supabase
+    .from("list_item")
+    .update({ status: status })
+    .eq("id", itemId);
+};
+
+const updateOrder = async (itemId, current, destination, lid) => {
+  await supabase.rpc("changeorder", {
+    item_id: itemId,
+    current: current,
+    destination: destination,
+    lid: lid,
+  });
+};
+
+export {
+  registerUser,
+  loginUser,
+  getCurrentUser,
+  logout,
+  createList,
+  getListByUser,
+  getItemByList,
+  getListById,
+  addItem,
+  deleteItem,
+  updateItem,
+  updateOrder,
+};

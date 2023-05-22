@@ -32,11 +32,11 @@ const Header = () => {
           <FontAwesomeIcon icon={faUser} /> {name}
         </p>
         <NavButton link="/" name="Home" />
-        <NavButton link="/user" name="My Account" />
+        <NavButton link={`/user/${user.id}`} name="My Lists" />
         <NavButton link="/contact" name="User List" />
         <NavButton link="/register" name="Register" />
         <NavButton link="/logout" name="Logout" />
-        <NavButton link="/list" name="Create" />
+        <NavButton link="/listnew" name="Create" />
 
       </nav>
     );
