@@ -88,7 +88,7 @@ const CreateList = () => {
           </div>
         )}
 
-        <h1 className="my-3 h1 text-center">Create A List</h1>
+        <h2 className="purples">Create A List</h2>
         <form
           onSubmit={create}
           className={loading ? "opacity-[10%] pointer-events-none" : ""}
