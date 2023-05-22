@@ -13,7 +13,9 @@ const Page = async ({ params: { user_id } }) => {
     return <p>Error: {error.message}</p>;
   } else if (titles.length == 0) {
     return (
-      <h1 className="text-center text-red-700">This user has no lists.</h1>
+      <h1 className="text-center my-10 text-red-700">
+        This user has no lists.
+      </h1>
     );
   } else if (user_id === data?.id) {
     return (

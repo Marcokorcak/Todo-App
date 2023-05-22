@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:link {
+/* :link {
   color: rgb(0, 0, 0);
   margin-left: 3%;
   margin-right: 3%;
   font-size: 30px;
   font-family: Shrikhand;
-}
+} */
 
 :root {
   background-image: url(https://cdn.discordapp.com/attachments/973631615832051782/1107855059175346216/Screen_Shot_2023-05-15_at_10.20.23_PM.png);
@@ -119,11 +119,11 @@ label {
   }
 }
 
-div {
+/* div {
   text-align: center;
   justify-content: center;
-  margin: auto;
-}
+  margin: auto; 
+} */
 
 .button {
   background-color: white;

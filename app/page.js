@@ -19,21 +19,15 @@ export default async function Home() {
 
   return (
     <main>
-      <h2 className="my-4 h1 text-4xl text-center font-extrabold">
-        Latest Lists
-      </h2>
+      <h2 className="my-6 text-4xl text-center font-extrabold">Latest Lists</h2>
       {data.map(({ name, user_id }) => {
         return (
           <div className="flex justify-center items-center" key={name}>
             <div className="text-center font-bold">
-              <div className="transform transition duration-400 hover:scale-125 ">
-                <Link
-                  key={user_id}
-                  href={`/user/${user_id}`}
-                  className="block my-5 button small"
-                >
-                  <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white border-4 border-black mb-5 mt-5 ">
-                    <div className="px-2 py-2">
+              <div>
+                <Link key={user_id} href={`/user/${user_id}`}>
+                  <div>
+                    <div className="my-2 border rounded-2xl w-60 transition duration-500 hover:scale-150 hover:bg-green-300 flex justify-center text-center">
                       <p> {`${name}'s Lists`}</p>
                     </div>
                   </div>
@@ -45,6 +39,4 @@ export default async function Home() {
       })}
     </main>
   );
-
-  return <main></main>;
 }
