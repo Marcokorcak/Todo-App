@@ -1,5 +1,5 @@
 "use client";
-import { getItemByList, getListById } from "@/app/utils/data";
+import { Ibl, Lid } from "@/app/utils/data";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle, faCircleCheck } from "@fortawesome/free-regular-svg-icons";
@@ -10,9 +10,9 @@ const Page = ({ params: { id } }) => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const { data: titles } = await getItemByList(id);
+      const { data: titles } = await Ibl(id);
       setItems(titles);
-      const { data } = await getListById(id);
+      const { data } = await Lid(id);
       setListName(data[0].title);
     };
     fetchItems();

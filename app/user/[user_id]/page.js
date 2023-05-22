@@ -1,11 +1,11 @@
 "use client";
-import { getListByUser, getCurrentUser } from "@/app/utils/data";
+import { list_user, getCurrentUser } from "@/app/utils/data";
 import Link from "next/link";
 
 const Page = async ({ params: { user_id } }) => {
     const { data } = await getCurrentUser();
   
-    const { data: titles, error } = await getListByUser(user_id);
+    const { data: titles, error } = await list_user(user_id);
   
     console.log(data);
   

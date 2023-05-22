@@ -1,11 +1,11 @@
 "use client";
 import {
-  addItem,
-  getItemByList,
-  deleteItem,
-  updateItem,
-  getListById,
-  updateOrder,
+  insertNewItem,
+  Ibl,
+  removeItem,
+  modifyItem,
+  Lid,
+  ChangePlacement,
 } from "@/app/utils/data";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,9 +21,9 @@ const Page = ({ params: { id } }) => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const { data: titles } = await getItemByList(id);
+      const { data: titles } = await Ibl(id);
       setItems(titles);
-      const { data } = await getListById(id);
+      const { data } = await Lid(id);
       setListName(data[0].title);
     };
     fetchItems();
@@ -38,14 +38,14 @@ const Page = ({ params: { id } }) => {
 
     const list_id = id;
     const order = items.length + 1;
-    const addedLink = await addItem(title, order, status, list_id);
+    const addedLink = await insertNewItem(title, order, status, list_id);
 
     if (addedLink.success == false) {
       console.log(items);
       //handle error
       return;
     }
-    const { data: titles } = await getItemByList(id);
+    const { data: titles } = await Ibl(id);
     setItems(titles);
     setTitle("");
 
@@ -54,9 +54,9 @@ const Page = ({ params: { id } }) => {
   };
 
   const deleteOneItem = async (itemId) => {
-    await deleteItem(itemId);
+    await removeItem(itemId);
 
-    const { data: titles } = await getItemByList(id);
+    const { data: titles } = await Ibl(id);
     setItems(titles);
 
     //@todo update this to either fake get the links (by taking the latest DB load + adding in the latest pushed link)
@@ -64,9 +64,9 @@ const Page = ({ params: { id } }) => {
   };
 
   const updateOneItem = async (itemId, status) => {
-    await updateItem(itemId, status);
+    await modifyItem(itemId, status);
 
-    const { data: titles } = await getItemByList(id);
+    const { data: titles } = await Ibl(id);
     setItems(titles);
 
     //@todo update this to either fake get the links (by taking the latest DB load + adding in the latest pushed link)
@@ -75,9 +75,9 @@ const Page = ({ params: { id } }) => {
 
   const updateOneItemOrder = async (itemId, current, destination, lid) => {
     // await supabase.rpc('changeOrder', { itemId : itemId, current : current, destination:destination, list_id : list_id })
-    await updateOrder(itemId, current, destination, lid);
+    await ChangePlacement(itemId, current, destination, lid);
 
-    const { data: titles } = await getItemByList(id);
+    const { data: titles } = await Ibl(id);
     setItems(titles);
   };
 

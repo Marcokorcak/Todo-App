@@ -1,9 +1,9 @@
-import { getLatestUsers } from "@/app/utils/data";
+import { recentUserList } from "./utils/data";
 import Link from "next/link";
 export const revalidate = 20;
 
 export default async function Home() {
-  const { success, data, error } = await getLatestUsers();
+  const { success, data, error } = await recentUserList();
 
   if (error) {
     return <p>Error: {error.message}</p>;

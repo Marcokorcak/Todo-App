@@ -158,7 +158,7 @@ const linkRequestData = {
   data: null,
 };
 
-const getLatestUsers = async (num = 5) => {
+const recentUserList = async (num = 5) => {
   const { data, error } = await supabase
     .from("profile")
     .select("name, user_id")
@@ -206,7 +206,7 @@ const createList = async (title, content, user_id) => {
   };
 };
 
-const getListByUser = async (user_id) => {
+const list_user = async (user_id) => {
   const { data, error } = await supabase
     .from("list")
     .select("title, id")
@@ -224,7 +224,7 @@ const getListByUser = async (user_id) => {
   };
 };
 
-const getItemByList = async (id) => {
+const Ibl = async (id) => {
   const { data, error } = await supabase
     .from("list_item")
     .select("title, order, status, id")
@@ -244,7 +244,7 @@ const getItemByList = async (id) => {
   };
 };
 
-const getListById = async (id) => {
+const Lid = async (id) => {
   const { data, error } = await supabase
     .from("list")
     .select("title")
@@ -262,7 +262,7 @@ const getListById = async (id) => {
   };
 };
 
-const addItem = async (title, order, status, list_id) => {
+const insertNewItem = async (title, order, status, list_id) => {
   const insertResponse = await supabase
     .from("list_item")
     .insert({
@@ -286,21 +286,21 @@ const addItem = async (title, order, status, list_id) => {
   };
 };
 
-const deleteItem = async (itemId) => {
+const removeItem = async (itemId) => {
   const deleteResponse = await supabase
     .from("list_item")
     .delete()
     .eq("id", itemId);
 };
 
-const updateItem = async (itemId, status) => {
+const modifyItem = async (itemId, status) => {
   const updateResponse = await supabase
     .from("list_item")
     .update({ status: status })
     .eq("id", itemId);
 };
 
-const updateOrder = async (itemId, current, destination, lid) => {
+const ChangePlacement = async (itemId, current, destination, lid) => {
   await supabase.rpc("changeorder", {
     item_id: itemId,
     current: current,
@@ -313,14 +313,14 @@ export {
   registerUser,
   loginUser,
   getCurrentUser,
-  getLatestUsers,
+  recentUserList,
   logout,
   createList,
-  getListByUser,
-  getItemByList,
-  getListById,
-  addItem,
-  deleteItem,
-  updateItem,
-  updateOrder,
+  list_user,
+  Ibl,
+  Lid,
+  insertNewItem,
+  removeItem,
+  modifyItem,
+  ChangePlacement,
 };
