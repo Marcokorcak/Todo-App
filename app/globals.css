@@ -138,3 +138,10 @@ label {
   background-color: black;
   color: white;
 }
+
+div.items{
+  margin-top: 30%;
+  align-items: center;
+  font-size:x-large;
+
+}
