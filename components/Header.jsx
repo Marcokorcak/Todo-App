@@ -37,9 +37,9 @@ const Header = () => {
           name="My Lists"
           className="lstyles"
         />
-        {/*  <NavButton link="/contact" name="User List" /> */}
-        {/* <NavButton link="/register" name="Register" /> */}
         <NavButton link="/listnew" name="Create" className="lstyles" />
+        <NavButton link="/" name="Login" className="lstyles" />
+        <NavButton link="/" name="Register" className="lstyles" />
         <NavButton link="/logout" name="Logout" className="lstyles" />
       </nav>
     );
@@ -50,8 +50,7 @@ const Header = () => {
           <FontAwesomeIcon icon={faUser} /> {name}
         </p>
         <NavButton link="/" name="Home" className="lstyles" />
-        {/* <NavButton link="/login" name="My Account" /> */}
-        <NavButton link="/login" name="User List" className="lstyles" />
+        <NavButton link="/login" name="My Lists" className="lstyles" />
         <NavButton link="/login" name="Login" className="lstyles" />
         <NavButton link="/register" name="Register" className="lstyles" />
       </nav>

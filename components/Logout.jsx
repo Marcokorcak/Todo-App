@@ -20,7 +20,7 @@ const Logout = () => {
 
   return (
     <div className="my-10">
-      <p>Logging out, please wait...</p>
+      <p className="text-center">Logging out, please wait...</p>
       {error && <p style={{ color: "#C20000" }}>Error: {error}</p>}
     </div>
   );

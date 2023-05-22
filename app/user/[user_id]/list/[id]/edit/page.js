@@ -42,15 +42,11 @@ const Page = ({ params: { id } }) => {
 
     if (addedLink.success == false) {
       console.log(items);
-      //handle error
       return;
     }
     const { data: titles } = await Ibl(id);
     setItems(titles);
     setTitle("");
-
-    //@todo update this to either fake get the links (by taking the latest DB load + adding in the latest pushed link)
-    //  or make a new request....
   };
 
   const deleteOneItem = async (itemId) => {
@@ -58,9 +54,6 @@ const Page = ({ params: { id } }) => {
 
     const { data: titles } = await Ibl(id);
     setItems(titles);
-
-    //@todo update this to either fake get the links (by taking the latest DB load + adding in the latest pushed link)
-    //  or make a new request....
   };
 
   const updateOneItem = async (itemId, status) => {
@@ -68,13 +61,9 @@ const Page = ({ params: { id } }) => {
 
     const { data: titles } = await Ibl(id);
     setItems(titles);
-
-    //@todo update this to either fake get the links (by taking the latest DB load + adding in the latest pushed link)
-    //  or make a new request....
   };
 
   const updateOneItemOrder = async (itemId, current, destination, lid) => {
-    // await supabase.rpc('changeOrder', { itemId : itemId, current : current, destination:destination, list_id : list_id })
     await ChangePlacement(itemId, current, destination, lid);
 
     const { data: titles } = await Ibl(id);
@@ -91,16 +80,14 @@ const Page = ({ params: { id } }) => {
 
   return (
     <section className={"mx-auto max-w-7xl px-4  "}>
-      {/* <h2 className="mt-8 h1 text-3xl text-center font-extrabold">Edit List</h2> */}
-
       <div className="w-full max-w-screen-xl  mx-auto px-6">
         <div className="flex justify-center p-4 px-3 py-10">
           <div className="w-full max-w-md">
-            <div className="bg-white shadow-md border-2 border-black rounded-lg px-3 py-2 mb-4">
+            <div className="bg-lime-200 shadow-md border-2 border-lime-200 rounded-lg px-3 py-2 mb-4">
               <div className="block text-gray-700 text-2xl font-semibold px-2">
                 {listName}
               </div>
-              <div className="flex items-center bg-gray-200 rounded-md">
+              <div className="flex items-center bg-lime-200 rounded-md">
                 <div className="pl-2"></div>
               </div>
               <div className="py-3 text-sm divide-y-2">
@@ -108,7 +95,7 @@ const Page = ({ params: { id } }) => {
                   return (
                     <div
                       key={itemId}
-                      className="flex justify-start  text-gray-700  rounded-md px-2 py-2 my-2 "
+                      className="flex justify-start  text-lime-200  rounded-md px-2 py-2 my-2 "
                     >
                       {status === false ? (
                         <div>
@@ -134,22 +121,17 @@ const Page = ({ params: { id } }) => {
                         </div>
                       )}
 
-                      <div className="flex-grow text-base font-medium text-gray-500 px-2">
+                      <div className="flex-grow text-base font-medium text-black px-2">
                         {title}
                       </div>
-                      <div className="text-sm font-normal text-gray-500 tracking-wide ">
+                      <div className="text-sm font-normal text-black tracking-wide ">
                         {" "}
                       </div>
-                      {/* <button
-                        className="bg-slate-500 hover:bg-slate-600 text-white font-bold  rounded h-10 px-4 m-2"
-                        onClick={() => updateOneItem(itemId, !status)}
-                      >
-                        Change Status
-                      </button> */}
+
                       {order === 1 ? (
                         <>
                           <button
-                            className="bg-slate-500 hover:bg-slate-600 text-white font-bold  rounded h-10 px-4 m-2"
+                            className="bg-lime-500 hover:bg-slate-600 text-white font-bold  rounded h-10 px-4 m-2"
                             onClick={() =>
                               updateOneItemOrder(
                                 itemId,
@@ -162,7 +144,7 @@ const Page = ({ params: { id } }) => {
                             Lower Priority{" "}
                           </button>
                           <button
-                            className="bg-red-500 hover:bg-red-600 text-white font-bold m-2 rounded"
+                            className="bg-red-300 hover:bg-red-500 text-white font-bold m-2 rounded"
                             onClick={() => deleteOneItem(itemId)}
                           >
                             <FontAwesomeIcon icon={faTrash} />
@@ -170,7 +152,7 @@ const Page = ({ params: { id } }) => {
                         </>
                       ) : (
                         <button
-                          className="bg-red-500 hover:bg-red-700 text-white font-bold h-10 px-4 m-2 rounded"
+                          className="bg-red-300 hover:bg-red-500 text-white font-bold h-10 px-4 m-2 rounded"
                           onClick={() => deleteOneItem(itemId)}
                         >
                           <FontAwesomeIcon icon={faTrash} />
@@ -180,21 +162,7 @@ const Page = ({ params: { id } }) => {
                   );
                 })}
               </div>
-              <div className="block bg-gray-200 text-sm text-right py-2 px-3 -mx-3 -mb-2 rounded-b-lg">
-                {/* <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  name="New Task"
-                  placeholder="New Task"
-                  value={title}
-                  onChange={titleHandler}
-                ></input>
-                <br />
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  onClick={addNewItem}
-                >
-                  Add
-                </button> */}
+              <div className="block bg-lime-200 text-sm text-right py-2 px-3 -mx-3 -mb-2 rounded-b-lg">
                 {!isEditing && (
                   <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-3 rounded"
@@ -206,7 +174,7 @@ const Page = ({ params: { id } }) => {
                 {isEditing && (
                   <div className="my-3">
                     <input
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                       name="New Task"
                       placeholder="New Task"
                       value={title}
@@ -214,13 +182,13 @@ const Page = ({ params: { id } }) => {
                     ></input>
                     <br />
                     <button
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-3 rounded"
+                      className="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 my-3 rounded"
                       onClick={addNewItem}
                     >
                       Add
                     </button>
                     <button
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-4 rounded"
+                      className="bg-red-300 hover:bg-red-500 text-white font-bold py-2 px-4 mx-4 rounded"
                       onClick={stopEditingHandler}
                     >
                       Cancel

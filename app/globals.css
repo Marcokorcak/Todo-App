@@ -151,27 +151,24 @@ div.items {
   font-size: x-large;
 }
 
-div.latest{
+div.latest {
   margin-top: 15%;
   height: 60px;
   width: 150px;
-    --g: 4px;     /* the gap */
-    --b: 8px;    /* border thickness*/
-    --c: #9643a2; /* the color */
-    
-    
-    padding: calc(var(--g) + var(--b));
-    --_c: #0000 0 25%, var(--c) 0 50%;
-    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
-    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
-    background:
-      var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
-      var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
-    background-size: 200% var(--b),var(--b) 200%;
-    cursor: pointer;
-    filter: grayscale(50%);
-    transition: .3s;
-  
+  --g: 4px; /* the gap */
+  --b: 8px; /* border thickness*/
+  --c: #9643a2; /* the color */
+
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg, var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg, var(--_c)) repeat-y;
+  background: var(--_g1) var(--_p, 25%) 0, var(--_g2) 0 var(--_p, 125%),
+    var(--_g1) var(--_p, 125%) 100%, var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b), var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: 0.3s;
 }
 
 div.latest:hover {
@@ -180,11 +177,9 @@ div.latest:hover {
 }
 
 @font-face {
-  font-family: 'Rocher';
+  font-family: "Rocher";
   src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
 }
-
-
 
 @font-palette-values --Grays {
   font-family: Rocher;
@@ -213,8 +208,8 @@ div.latest:hover {
   font-palette: --Mint;
 }
 
-h2.purples{
-  font-family: 'Rocher';
+h2.purples {
+  font-family: "Rocher";
   text-align: center;
   font-size: 40px;
   display: flex;
