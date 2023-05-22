@@ -25,11 +25,11 @@ const CreateList = () => {
     getCurUser();
   }, []);
 
-  const uuid = { id };
+  const uuid = id;
 
-  /*  useEffect(() => {
+  useEffect(() => {
     console.log("ID ->", id);
-  }, [id]); */
+  }, [id]);
 
   function reducer(state, action) {
     switch (action.type) {
