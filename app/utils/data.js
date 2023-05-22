@@ -158,6 +158,25 @@ const linkRequestData = {
   data: null,
 };
 
+const getLatestUsers = async (num = 5) => {
+  const { data, error } = await supabase
+    .from("profile")
+    .select("name, user_id")
+    .order("created_at", { ascending: false })
+    .limit(num);
+
+  if (error) {
+    return {
+      success: false,
+      error,
+    };
+  }
+
+  return {
+    success: true,
+    data,
+  };
+};
 
 const logout = async () => {
   const { error } = await supabase.auth.signOut();
@@ -294,6 +313,7 @@ export {
   registerUser,
   loginUser,
   getCurrentUser,
+  getLatestUsers,
   logout,
   createList,
   getListByUser,

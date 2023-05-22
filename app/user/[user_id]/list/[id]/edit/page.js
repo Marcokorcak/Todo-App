@@ -79,9 +79,6 @@ const Page = ({ params: { id } }) => {
 
     const { data: titles } = await getItemByList(id);
     setItems(titles);
-
-    //@todo update this to either fake get the links (by taking the latest DB load + adding in the latest pushed link)
-    //  or make a new request....
   };
 
   const startEditingHandler = () => {
@@ -113,37 +110,6 @@ const Page = ({ params: { id } }) => {
                       key={itemId}
                       className="flex justify-start  text-gray-700  rounded-md px-2 py-2 my-2 "
                     >
-                      {/* {status === false ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="fill-red-500"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className=" flex justify-start w-6 h-6 text-red-500"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                      ) : (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6 text-green-500"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                      )}{" "} */}
                       {status === false ? (
                         <div>
                           <button
@@ -196,7 +162,7 @@ const Page = ({ params: { id } }) => {
                             Lower Priority{" "}
                           </button>
                           <button
-                            className="bg-red-500 hover:bg-red-600 text-white font-bold h-10 px-4 m-2 rounded"
+                            className="bg-red-500 hover:bg-red-600 text-white font-bold m-2 rounded"
                             onClick={() => deleteOneItem(itemId)}
                           >
                             <FontAwesomeIcon icon={faTrash} />

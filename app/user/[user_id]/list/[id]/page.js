@@ -1,6 +1,8 @@
 "use client";
 import { getItemByList, getListById } from "@/app/utils/data";
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle, faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 
 const Page = ({ params: { id } }) => {
   const [items, setItems] = useState([]);
@@ -18,10 +20,6 @@ const Page = ({ params: { id } }) => {
 
   return (
     <section className={"mx-auto max-w-7xl px-4 py-5 "}>
-      <h2 className="my-10 h1 text-4xl text-center font-extrabold">
-        View List
-      </h2>
-
       <br />
       <br />
       <br />
@@ -44,36 +42,28 @@ const Page = ({ params: { id } }) => {
                       className="flex justify-start  text-gray-700  rounded-md px-2 py-2 my-2 "
                     >
                       {status === false ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="fill-red-500"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className=" flex justify-start w-6 h-6 text-red-500"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
+                        <div>
+                          <button
+                            className="text-3xl"
+                            onClick={() => updateOneItem(itemId, !status)}
+                          >
+                            <FontAwesomeIcon icon={faCircle} />
+                          </button>{" "}
+                        </div>
                       ) : (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6 text-green-500"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                      )}{" "}
+                        <div>
+                          <button
+                            className="text-3xl"
+                            onClick={() => updateOneItem(itemId, !status)}
+                          >
+                            {" "}
+                            <FontAwesomeIcon
+                              icon={faCircleCheck}
+                              style={{ color: "#49b71a" }}
+                            />
+                          </button>
+                        </div>
+                      )}
                       <div className="flex-grow text-base font-medium text-gray-500 px-2">
                         {title}
                       </div>
