@@ -5,9 +5,6 @@ const HomeScreen = () => {
   return <div>
     < Header/>
 
-    <p> HI 
-
-    </p>
   </div>;
 };
 

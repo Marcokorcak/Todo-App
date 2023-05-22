@@ -20,9 +20,7 @@ const Page = ({ params: { id } }) => {
 
   return (
     <section className={"mx-auto max-w-7xl px-4 py-5 "}>
-      <br />
-      <br />
-      <br />
+    
 
       <div className="w-full max-w-screen-xl mx-auto px-6">
         <div className="flex justify-center p-4 px-3 py-10">
