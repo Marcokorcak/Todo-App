@@ -13,24 +13,24 @@ import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faCircle, faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 
 const Page = ({ params: { id } }) => {
-  const [title, setTitle] = useState("");
-  const [status, setStatus] = useState(false);
-  const [items, setItems] = useState([]);
-  const [listName, setListName] = useState("");
-  const [isEditing, setIsEditing] = useState(false);
+  const [title, assignTitle] = useState("");
+  const [status, assignS] = useState(false);
+  const [items, assignItem] = useState([]);
+  const [nList, assignName] = useState("");
+  const [editVar, EditBool] = useState(false);
 
   useEffect(() => {
     const fetchItems = async () => {
       const { data: titles } = await Ibl(id);
-      setItems(titles);
+      assignItem(titles);
       const { data } = await Lid(id);
-      setListName(data[0].title);
+      assignName(data[0].title);
     };
     fetchItems();
   }, [id]);
 
-  const titleHandler = (e) => {
-    setTitle(e.target.value);
+  const HandleT = (e) => {
+    assignTitle(e.target.value);
   };
 
   const addNewItem = async (e) => {
@@ -45,37 +45,37 @@ const Page = ({ params: { id } }) => {
       return;
     }
     const { data: titles } = await Ibl(id);
-    setItems(titles);
-    setTitle("");
+    assignItem(titles);
+    assignTitle("");
   };
 
-  const deleteOneItem = async (itemId) => {
+  const deleteItem = async (itemId) => {
     await removeItem(itemId);
 
     const { data: titles } = await Ibl(id);
-    setItems(titles);
+    assignItem(titles);
   };
 
-  const updateOneItem = async (itemId, status) => {
+  const updateI = async (itemId, status) => {
     await modifyItem(itemId, status);
 
     const { data: titles } = await Ibl(id);
-    setItems(titles);
+    assignItem(titles);
   };
 
-  const updateOneItemOrder = async (itemId, current, destination, lid) => {
+  const updateIOrder = async (itemId, current, destination, lid) => {
     await ChangePlacement(itemId, current, destination, lid);
 
     const { data: titles } = await Ibl(id);
-    setItems(titles);
+    assignItem(titles);
   };
 
-  const startEditingHandler = () => {
-    setIsEditing(true);
+  const editHandle = () => {
+    EditBool(true);
   };
 
-  const stopEditingHandler = () => {
-    setIsEditing(false);
+  const stopEdit = () => {
+    EditBool(false);
   };
 
   return (
@@ -85,7 +85,7 @@ const Page = ({ params: { id } }) => {
           <div className="w-full max-w-md">
             <div className="bg-lime-200 shadow-md border-2 border-lime-200 rounded-lg px-3 py-2 mb-4">
               <div className="block text-gray-700 text-2xl font-semibold px-2">
-                {listName}
+                {nList}
               </div>
               <div className="flex items-center bg-indigo-600 rounded-md">
                 <div className="pl-2"></div>
@@ -101,7 +101,7 @@ const Page = ({ params: { id } }) => {
                         <div>
                           <button
                             className="text-3xl"
-                            onClick={() => updateOneItem(itemId, !status)}
+                            onClick={() => updateI(itemId, !status)}
                           >
                             <FontAwesomeIcon icon={faCircle} />
                           </button>{" "}
@@ -110,7 +110,7 @@ const Page = ({ params: { id } }) => {
                         <div>
                           <button
                             className="text-3xl"
-                            onClick={() => updateOneItem(itemId, !status)}
+                            onClick={() => updateI(itemId, !status)}
                           >
                             {" "}
                             <FontAwesomeIcon
@@ -133,7 +133,7 @@ const Page = ({ params: { id } }) => {
                           <button
                             className="bg-lime-500 hover:bg-slate-600 text-white font-bold  rounded h-10 px-4 m-2"
                             onClick={() =>
-                              updateOneItemOrder(
+                              updateIOrder(
                                 itemId,
                                 order,
                                 items.length,
@@ -145,7 +145,7 @@ const Page = ({ params: { id } }) => {
                           </button>
                           <button
                             className="bg-red-300 hover:bg-red-500 text-white font-bold m-2 rounded"
-                            onClick={() => deleteOneItem(itemId)}
+                            onClick={() => deleteItem(itemId)}
                           >
                             <FontAwesomeIcon icon={faTrash} />
                           </button>
@@ -153,7 +153,7 @@ const Page = ({ params: { id } }) => {
                       ) : (
                         <button
                           className="bg-red-300 hover:bg-red-500 text-white font-bold h-10 px-4 m-2 rounded"
-                          onClick={() => deleteOneItem(itemId)}
+                          onClick={() => deleteItem(itemId)}
                         >
                           <FontAwesomeIcon icon={faTrash} />
                         </button>
@@ -163,22 +163,22 @@ const Page = ({ params: { id } }) => {
                 })}
               </div>
               <div className="block bg-lime-200 text-sm text-right py-2 px-3 -mx-3 -mb-2 rounded-b-lg">
-                {!isEditing && (
+                {!editVar && (
                   <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-3 rounded"
-                    onClick={startEditingHandler}
+                    onClick={editHandle}
                   >
                     Add New Task <FontAwesomeIcon icon={faPenToSquare} />
                   </button>
                 )}
-                {isEditing && (
+                {editVar && (
                   <div className="my-3">
                     <input
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                       name="New Task"
                       placeholder="New Task"
                       value={title}
-                      onChange={titleHandler}
+                      onChange={HandleT}
                     ></input>
                     <br />
                     <button
@@ -189,7 +189,7 @@ const Page = ({ params: { id } }) => {
                     </button>
                     <button
                       className="bg-red-300 hover:bg-red-500 text-white font-bold py-2 px-4 mx-4 rounded"
-                      onClick={stopEditingHandler}
+                      onClick={stopEdit}
                     >
                       Cancel
                     </button>

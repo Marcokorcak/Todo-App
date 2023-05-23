@@ -5,15 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle, faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 
 const Page = ({ params: { id } }) => {
-  const [items, setItems] = useState([]);
-  const [listName, setListName] = useState("");
+  const [items, assignItems] = useState([]);
+  const [Lname, assignName] = useState("");
 
   useEffect(() => {
     const fetchItems = async () => {
       const { data: titles } = await Ibl(id);
-      setItems(titles);
+      assignItems(titles);
       const { data } = await Lid(id);
-      setListName(data[0].title);
+      assignName(data[0].title);
     };
     fetchItems();
   }, [id]);
@@ -25,7 +25,7 @@ const Page = ({ params: { id } }) => {
           <div className="w-full max-w-md">
             <div className="bg-lime-200 shadow-md border-2 border-black rounded-lg px-3 py-2 mb-4">
               <div className="block text-gray-700 text-2xl font-semibold py-2 px-2">
-                {listName}
+                {Lname}
               </div>
               <div className="flex items-center rounded-md">
                 <div className="pl-2"></div>
