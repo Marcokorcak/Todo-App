@@ -87,15 +87,15 @@ const Page = ({ params: { id } }) => {
               <div className="block text-gray-700 text-2xl font-semibold px-2">
                 {listName}
               </div>
-              <div className="flex items-center bg-lime-200 rounded-md">
+              <div className="flex items-center bg-indigo-600 rounded-md">
                 <div className="pl-2"></div>
               </div>
-              <div className="py-3 text-sm divide-y-2">
+              <div className="py-3 text-sm divide-y-2 divide-y-reverse divide-lime-500">
                 {items.map(({ title, order, status, id: itemId }) => {
                   return (
                     <div
                       key={itemId}
-                      className="flex justify-start  text-lime-200  rounded-md px-2 py-2 my-2 "
+                      className="flex justify-start  text-slate-500  rounded-md px-2 py-2 my-2 "
                     >
                       {status === false ? (
                         <div>

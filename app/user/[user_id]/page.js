@@ -49,7 +49,7 @@ const Page = async ({ params: { user_id } }) => {
           return (
             <div className="flex justify-center items-center" key={title}>
               <div className="text-center font-bold">
-                <div className>
+                <div>
                   <div className="items">
                     <a
                       key={title}
