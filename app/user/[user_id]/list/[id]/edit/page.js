@@ -29,9 +29,7 @@ const Page = ({ params: { id } }) => {
     fetchItems();
   }, [id]);
 
-  const HandleT = (e) => {
-    assignTitle(e.target.value);
-  };
+
 
   const addNewItem = async (e) => {
     e.preventDefault();
@@ -49,18 +47,19 @@ const Page = ({ params: { id } }) => {
     assignTitle("");
   };
 
-  const deleteItem = async (itemId) => {
-    await removeItem(itemId);
-
-    const { data: titles } = await Ibl(id);
-    assignItem(titles);
+  const HandleT = (e) => {
+    assignTitle(e.target.value);
   };
-
+  
   const updateI = async (itemId, status) => {
     await modifyItem(itemId, status);
 
     const { data: titles } = await Ibl(id);
     assignItem(titles);
+  };
+
+  const stopEdit = () => {
+    EditBool(false);
   };
 
   const updateIOrder = async (itemId, current, destination, lid) => {
@@ -70,13 +69,19 @@ const Page = ({ params: { id } }) => {
     assignItem(titles);
   };
 
+
+  const deleteItem = async (itemId) => {
+    await removeItem(itemId);
+
+    const { data: titles } = await Ibl(id);
+    assignItem(titles);
+  };
+
   const editHandle = () => {
     EditBool(true);
   };
 
-  const stopEdit = () => {
-    EditBool(false);
-  };
+ 
 
   return (
     <section className={"mx-auto max-w-7xl px-4  "}>
