@@ -30,7 +30,7 @@ const Page = ({ params: { id } }) => {
               <div className="flex items-center rounded-md">
                 <div className="pl-2"></div>
               </div>
-              <div className="py-3 text-sm divide-y-2">
+              <div className="py-3 text-sm divide-y-2 divide-lime-500">
                 {items.map(({ title, order, status, id: itemId }) => {
                   return (
                     <div
