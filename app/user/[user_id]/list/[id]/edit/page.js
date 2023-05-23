@@ -50,7 +50,7 @@ const Page = ({ params: { id } }) => {
   const HandleT = (e) => {
     assignTitle(e.target.value);
   };
-  
+
   const updateI = async (itemId, status) => {
     await modifyItem(itemId, status);
 
@@ -82,7 +82,6 @@ const Page = ({ params: { id } }) => {
   };
 
  
-
   return (
     <section className={"mx-auto max-w-7xl px-4  "}>
       <div className="w-full max-w-screen-xl  mx-auto px-6">
